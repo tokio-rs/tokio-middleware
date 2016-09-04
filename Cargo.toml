@@ -1,0 +1,10 @@
+[package]
+name = "tokio-middleware"
+version = "0.1.0"
+authors = ["Carl Lerche <me@carllerche.com>"]
+
+[dependencies]
+
+futures = { git = "https://github.com/alexcrichton/futures-rs" }
+tokio-service = { git = "https://github.com/tokio-rs/tokio-service" }
+tokio-timer = { git = "https://github.com/tokio-rs/tokio-timer" }
