@@ -2,6 +2,9 @@
 
 A collection of Tokio `Service` middleware.
 
+[![Build Status](https://travis-ci.org/tokio-rs/tokio-middleware.svg?branch=master)](https://travis-ci.org/tokio-rs/tokio-middleware)
+
+[Documentation](https://tokio-rs.github.io/tokio-middleware) |
 [Gitter](https://gitter.im/tokio-rs/tokio)
 
 ## Usage
