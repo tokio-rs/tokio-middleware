@@ -2,6 +2,8 @@ use tokio_service::Service;
 use tokio_timer::{self as timer, Timer};
 use std::time::Duration;
 
+/// Abort requests that are taking too long
+#[derive(Clone)]
 pub struct Timeout<S> {
     upstream: S,
     timer: Timer,
@@ -9,6 +11,10 @@ pub struct Timeout<S> {
 }
 
 impl<S> Timeout<S> {
+    /// Crate a new `Timeout` with the given `upstream` service.
+    ///
+    /// Requests will be limited to `duration` and aborted once the limit has
+    /// been reached.
     pub fn new(upstream: S, timer: Timer, duration: Duration) -> Timeout<S> {
         Timeout {
             upstream: upstream,
