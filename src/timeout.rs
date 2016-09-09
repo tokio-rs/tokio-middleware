@@ -1,3 +1,4 @@
+use futures::Async;
 use tokio_service::Service;
 use tokio_timer::{self as timer, Timer};
 use std::time::Duration;
@@ -28,13 +29,17 @@ impl<S, E> Service for Timeout<S>
     where S: Service<Error = E>,
           E: From<timer::TimeoutError>,
 {
-    type Req = S::Req;
-    type Resp = S::Resp;
+    type Request = S::Request;
+    type Response = S::Response;
     type Error = S::Error;
-    type Fut = timer::Timeout<S::Fut>;
+    type Future = timer::Timeout<S::Future>;
 
-    fn call(&self, request: Self::Req) -> Self::Fut {
+    fn call(&self, request: Self::Request) -> Self::Future {
         let resp = self.upstream.call(request);
         self.timer.timeout(resp, self.duration)
+    }
+
+    fn poll_ready(&self) -> Async<()> {
+        Async::Ready(())
     }
 }
