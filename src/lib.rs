@@ -24,6 +24,8 @@ extern crate futures;
 extern crate tokio_service;
 extern crate tokio_timer;
 
+mod log;
 mod timeout;
 
+pub use log::Log;
 pub use timeout::Timeout;

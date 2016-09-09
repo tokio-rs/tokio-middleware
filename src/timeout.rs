@@ -40,6 +40,6 @@ impl<S, E> Service for Timeout<S>
     }
 
     fn poll_ready(&self) -> Async<()> {
-        Async::Ready(())
+        self.upstream.poll_ready()
     }
 }
