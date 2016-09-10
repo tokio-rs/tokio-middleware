@@ -5,6 +5,6 @@ authors = ["Carl Lerche <me@carllerche.com>"]
 
 [dependencies]
 
-futures = { git = "https://github.com/alexcrichton/futures-rs" }
+futures = "0.1"
 tokio-service = { git = "https://github.com/tokio-rs/tokio-service" }
 tokio-timer = { git = "https://github.com/tokio-rs/tokio-timer" }
