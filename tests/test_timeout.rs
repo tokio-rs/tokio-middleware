@@ -2,8 +2,10 @@ extern crate futures;
 extern crate tokio_timer as timer;
 extern crate tokio_middleware as middleware;
 extern crate tokio_service as service;
+extern crate service_fn;
 
 use futures::{Future, Poll, Async};
+use service_fn::service_fn;
 use timer::Timer;
 use middleware::Timeout;
 use service::Service;
@@ -12,12 +14,12 @@ use std::time::Duration;
 
 #[test]
 fn test_request_succeeds() {
-    let service = service::simple_service(|req| {
+    let service = service_fn(|req| {
         assert_eq!("request", req);
         Ok::<&'static str, io::Error>("response")
     });
 
-    let service = Timeout::new(
+    let mut service = Timeout::new(
         service, Timer::default(),
         Duration::from_millis(200));
 
@@ -28,12 +30,12 @@ fn test_request_succeeds() {
 
 #[test]
 fn test_request_times_out() {
-    let service = service::simple_service(|req| {
+    let service = service_fn(|req| {
         assert_eq!("request", req);
         Never
     });
 
-    let service = Timeout::new(
+    let mut service = Timeout::new(
         service, Timer::default(),
         Duration::from_millis(200));
 
