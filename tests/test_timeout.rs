@@ -19,7 +19,7 @@ fn test_request_succeeds() {
         Ok::<&'static str, io::Error>("response")
     });
 
-    let mut service = Timeout::new(
+    let service = Timeout::new(
         service, Timer::default(),
         Duration::from_millis(200));
 
@@ -35,7 +35,7 @@ fn test_request_times_out() {
         Never
     });
 
-    let mut service = Timeout::new(
+    let service = Timeout::new(
         service, Timer::default(),
         Duration::from_millis(200));
 

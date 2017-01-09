@@ -21,7 +21,7 @@ impl<S> Service for Log<S>
     type Error = S::Error;
     type Future = S::Future;
 
-    fn call(&mut self, request: Self::Request) -> Self::Future {
+    fn call(&self, request: Self::Request) -> Self::Future {
         println!("[REQUEST] {:?}", request);
         self.upstream.call(request)
     }
