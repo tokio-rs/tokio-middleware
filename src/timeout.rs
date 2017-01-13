@@ -26,7 +26,7 @@ impl<S> Timeout<S> {
 
 impl<S, E> Service for Timeout<S>
     where S: Service<Error = E>,
-          E: From<timer::TimeoutError>,
+          E: From<timer::TimeoutError<S::Future>>,
 {
     type Request = S::Request;
     type Response = S::Response;
