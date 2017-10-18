@@ -20,7 +20,6 @@
 //! middleware, but middleware that is protocol specific can be found in crates
 //! that implement those protocols.
 
-extern crate futures;
 extern crate tokio_service;
 extern crate tokio_timer;
 
