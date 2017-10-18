@@ -1,0 +1,3 @@
+var searchIndex = {};
+searchIndex["tokio_middleware"] = {"doc":"A collection of middleware `Service` middleware.","items":[[3,"Log","tokio_middleware","",null,null],[3,"Timeout","","Abort requests that are taking too long",null,null],[11,"clone","","",0,{"inputs":[{"name":"self"}],"output":{"name":"log"}}],[11,"new","","",0,{"inputs":[{"name":"s"}],"output":{"name":"log"}}],[11,"call","","",0,null],[11,"clone","","",1,{"inputs":[{"name":"self"}],"output":{"name":"timeout"}}],[11,"new","","Crate a new `Timeout` with the given `upstream` service.",1,{"inputs":[{"name":"s"},{"name":"timer"},{"name":"duration"}],"output":{"name":"timeout"}}],[11,"call","","",1,null]],"paths":[[3,"Log"],[3,"Timeout"]]};
+initSearch(searchIndex);
